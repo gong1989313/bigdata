@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="jdbcUrl">
+			<value>jdbc:mysql://localhost:3306/person_cloud?serverTimezone=UTC&amp;characterEncoding=utf-8
+			</value>
+		</property>
+		<property name="driverClass">
+			<value>com.mysql.cj.jdbc.Driver</value>
+		</property>
+		<property name="user">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="jdbcTemplateTool" class="org.crazycake.jdbcTemplateTool.JdbcTemplateTool">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<bean id="personDAO" class="com.person.cloud.jdbc.dao.impl.PersonDAOImpl">
+		<property name="jdbcTemplateTool" ref="jdbcTemplateTool" />
+	</bean>
+</beans>
