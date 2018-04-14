@@ -12,7 +12,7 @@ public class TwinsLock implements Lock {
 
 		private static final long serialVersionUID = 1L;
 		
-		Sync(int count) {
+		public Sync(int count) {
 			if(count <= 0) {
 				throw new IllegalArgumentException("count must large than zero!");
 			}
