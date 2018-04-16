@@ -2,7 +2,7 @@ package algorithms;
 
 import java.util.Arrays;
 
-public class QuickSort {
+public class QuickSortLearn {
 	public static void main(String[] args) {
 		int[] s = { 66, 13, 51, 76, 81, 26, 57, 69, 23 };
 		quickSort(s, 0, s.length - 1);
@@ -18,18 +18,20 @@ public class QuickSort {
 			if (i < j) {
 				s[i] = s[j];
 			}
+
 			while (i < j && s[i] <= x) {
 				i++;
 			}
 			if (i < j) {
 				s[j] = s[i];
 			}
-			//此时i==j,下面s[i]或者s[j]都可以，j-1,j+1也ok  
 			s[i] = x;
-			if (l < i)
-				quickSort(s, l, i - 1);
-			if (r > i)
-				quickSort(s, i + 1, r);
+			if (l < j) {
+				quickSort(s, l, j - 1);
+			}
+			if (r > j) {
+				quickSort(s, j + 1, r);
+			}
 		}
 	}
 }
