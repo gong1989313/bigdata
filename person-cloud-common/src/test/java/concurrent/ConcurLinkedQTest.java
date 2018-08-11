@@ -1,7 +1,9 @@
 package concurrent;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.DelayQueue;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.LinkedTransferQueue;
 
 import org.junit.Test;
 
@@ -18,4 +20,14 @@ public class ConcurLinkedQTest {
 		FutureTask ft ;
 	}
 
+	@Test
+	public void testDelayQueue() {
+		DelayQueue clq = new DelayQueue();
+		clq.put(null);
+	}
+	
+	@Test
+	public void testLinkedTransferQueue() {
+		LinkedTransferQueue ltq = null;
+	}
 }

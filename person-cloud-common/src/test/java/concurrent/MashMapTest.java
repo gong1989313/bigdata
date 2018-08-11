@@ -1,5 +1,9 @@
 package concurrent;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.LockSupport;
+
 import org.junit.Test;
 
 public class MashMapTest {
@@ -9,6 +13,15 @@ public class MashMapTest {
 	public void test() {
 		System.out.println(highestOneBit(5));
 		System.out.println(highestOneBit(124));
+		LockSupport ls = null;
+		ls.park();
+		Condition c = null;
+	}
+	
+	@Test
+	public void testConcurrent() {
+		ConcurrentHashMap map = null;
+		map.put("test", 123);
 	}
 	
 	//通过Integer.highestOneBit算出比指定整数小的最大的2^N值
